@@ -58,12 +58,28 @@ searched at <http://search.cpan.org/>""
 Now I can find and download the Module::Build module from CPAN
 ---> Module-Build-0.4231.tar.gz
 
+""Also note that these instructions are designed to install the module
+       in your system's Perl module repository, but you can install
+       modules in any directory you want.""
+
+We are going to install the perl modules in the system directory. In this way, the following steps are universal.
+
 There are four steps we must follow now:
 
 ""    DECOMPRESS the file
     UNPACK the file into a directory
     BUILD the module (sometimes unnecessary)
     INSTALL the module.""
+
+DECOMPRESS and UNPACK
+    gzip -dc Module-Build-0.4231.tar.gz | tar -xof -
+
+I already have a directory with the source files/directories of the module:
+
+operador@elite:~/Descargas/perlModules/Module-Build-0.4231$ ls
+bin       Changes  inc      lib      Makefile.PL  META.json  README
+Build.PL  contrib  INSTALL  LICENSE  MANIFEST     META.yml   t
+
 
 
 
