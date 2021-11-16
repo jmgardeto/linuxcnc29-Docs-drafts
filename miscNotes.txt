@@ -1,3 +1,12 @@
+Note:
+This file is NOT a collection of recipes.
+The purpose of this text is to keep a record of my activities. Perhaps it will be useful to me as a basis for other documents.
+However, a first quick reading can give you an idea of the number of pitfalls present in the translation process.
+Each individualizable stage is outlined with asterics.
+Paragraphs between a pair of double quotes are literals from other documentation or terminal outputs.
+
+
+
 =================
 November, 11 2021
 =================
@@ -13,7 +22,7 @@ buster-backports (text): tools to ease the translation of documentation
 bullseye (stable) (text): tools to ease the translation of documentation
 0.62-1: all 
 
-Actual release: from https://github.com/mquinson/po4a/META.json:
+Actual release (from https://github.com/mquinson/po4a/META.json):
 ****************************************************************
 
 Releasing v0.65
@@ -21,17 +30,17 @@ Releasing v0.65
 Installation (from https://github.com/mquinson/po4a/README.md):
 ***************************************************************
 
-(after git clone) To install this module, type the following:
+(after git clone) ""To install this module, type the following:
 
    perl Build.PL
    ./Build
-   ./Build install
+   ./Build install""
 
 This fails on my system. Perl seems to need modules that are not available in it.
 ""Can't locate Module/Build.pm in @INC (you may need to install the Module::Build module)""
 
 From $> man Perl 1
-***************
+******************
 
 ""If you're new to Perl, you should start by running "perldoc perlintro""
 ""You need to install the perl-doc package to use this program.""
