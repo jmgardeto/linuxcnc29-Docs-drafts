@@ -65,7 +65,7 @@ The overall data-flow looks like this:
 
 ## Maintaining the linuxcnc.pot file
 
-(This is done by the documentation l10n coordinator).
+** This is done by the documentation l10n coordinator. **
 
 The linuxcnc.pot file contains a message catalog extracted from
 linuxCNC documentation sources. The l10n coordinator maintains it by
