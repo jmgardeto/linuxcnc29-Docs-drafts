@@ -13,7 +13,6 @@ https://www.gnu.org/software/gettext/manual/gettext.html#Usual-Language-Codes
 
 ## Contributing to an existing translation
 
-
 As a contributor for a language ‘ll’, you should first check TEAMS file
 in this directory to see whether a dedicated team for your language ‘ll’
 exists. Fork the dedicated repository and start to work if it exists.
@@ -29,7 +28,6 @@ If there are multiple contributors for the same language, please first
 coordinate among yourselves and nominate the team leader for your
 language, so that the l10n coordinator only needs to interact with one
 person per language.
-
 
 ## Creating a new language translation (direct translation)
 
@@ -65,7 +63,7 @@ The overall data-flow looks like this:
 
 ## Maintaining the linuxcnc.pot file
 
-** This is done by the documentation l10n coordinator. **
+**This is done by the documentation l10n coordinator.**
 
 The linuxcnc.pot file contains a message catalog extracted from
 linuxCNC documentation sources. The l10n coordinator maintains it by
@@ -80,10 +78,9 @@ Language contributors use this file to prepare translations for their
 language, but they are not expected to modify it.
 
 
-Initializing a XX.po file
----------------------------------------
+## Initializing a XX.po file
 
-** This is done by the language teams. **
+**This is done by the language teams. **
 
 If your language XX does not have translated message file
 XX.po yet, you add a translation for the first time by
@@ -121,7 +118,7 @@ XX.po files and ask the l10n coordinator to pull from you.
 
 ## Updating a XX.po file
 
-** This is done by the language teams. **
+**This is done by the language teams. **
 
 If you are replacing translation strings in an existing
 XX.po file to improve the translation, just edit the file.
@@ -136,7 +133,7 @@ and ask the l10n coordinator to pull from you.
 
 ## Testing your changes
 
-** This is done by the language teams, after creating or updating
+**This is done by the language teams, after creating or updating
 XX.po file. **
 
 
