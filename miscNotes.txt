@@ -1,0 +1,20 @@
+November, 11 2021
+=================
+po4a packages in Debian versions:
+*********************************
+
+buster (oldstable) (text): tools to ease the translation of documentation
+0.55-1: all
+
+buster-backports (text): tools to ease the translation of documentation
+0.61-1~bpo10+1: all
+
+bullseye (stable) (text): tools to ease the translation of documentation
+0.62-1: all 
+
+From https://github.com/mquinson/po4a:
+**************************************
+
+META.json           
+Releasing v0.65 
+
