@@ -14,7 +14,7 @@ bullseye (stable) (text): tools to ease the translation of documentation
 0.62-1: all 
 
 Actual release: from https://github.com/mquinson/po4a/META.json:
-******************************************************
+****************************************************************
 
 Releasing v0.65
 
@@ -80,17 +80,37 @@ operador@elite:~/Descargas/perlModules/Module-Build-0.4231$ ls
 bin       Changes  inc      lib      Makefile.PL  META.json  README
 Build.PL  contrib  INSTALL  LICENSE  MANIFEST     META.yml   t
 
+At this point, we have a dilemma:
+
+The module's INSTALL file says:
+"" To install this module, just do:
+
+   perl Build.PL
+. . . ""
+
+On the other hand, the perlmodeinstal help from the Perl documentation says:
+"" Go into the newly-created directory and type:
+
+               perl Makefile.PL
+            . . . ""
+
+Both roads lead us to the same place ......""ERRORS/WARNINGS FOUND IN PREREQUISITES.""
+
+"" ....
+Checking optional features ...
+inc_bundling_support .... disabled
+   requires:
+     ! inc :: latest is not installed
+.... ""
+
+This is because Makefile.PL runs Build.PL
 
 
 
 
+BUILD
 
-  
+        Go into the newly-created directory and type:
 
-
-
-
-
-
-
-
+              perl Makefile.PL
+              make test
