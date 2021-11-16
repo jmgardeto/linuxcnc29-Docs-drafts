@@ -63,7 +63,7 @@ The overall data-flow looks like this:
 
 ## Maintaining the linuxcnc.pot file
 
-**This is done by the documentation l10n coordinator.**
+**This is done by the documentation l10n coordinator.
 
 The linuxcnc.pot file contains a message catalog extracted from
 linuxCNC documentation sources. The l10n coordinator maintains it by
@@ -80,7 +80,7 @@ language, but they are not expected to modify it.
 
 ## Initializing a XX.po file
 
-**This is done by the language teams. **
+**This is done by the language teams.
 
 If your language XX does not have translated message file
 XX.po yet, you add a translation for the first time by
@@ -118,7 +118,7 @@ XX.po files and ask the l10n coordinator to pull from you.
 
 ## Updating a XX.po file
 
-**This is done by the language teams. **
+**This is done by the language teams.
 
 If you are replacing translation strings in an existing
 XX.po file to improve the translation, just edit the file.
@@ -134,7 +134,7 @@ and ask the l10n coordinator to pull from you.
 ## Testing your changes
 
 **This is done by the language teams, after creating or updating
-XX.po file. **
+XX.po file.
 
 
 Before being able to compile the documents, you need to have a working
