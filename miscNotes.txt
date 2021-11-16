@@ -12,9 +12,33 @@ buster-backports (text): tools to ease the translation of documentation
 bullseye (stable) (text): tools to ease the translation of documentation
 0.62-1: all 
 
-From https://github.com/mquinson/po4a:
-**************************************
+Actual release: from https://github.com/mquinson/po4a/META.json:
+******************************************************
 
-META.json           
-Releasing v0.65 
+Releasing v0.65
+
+Installation: from https://github.com/mquinson/po4a/README.md:
+**************************************************************
+
+(after git clone) To install this module, type the following:
+
+   perl Build.PL
+   ./Build
+   ./Build install
+
+This fails on my system. Perl seems to need modules that are not available in it.
+""Can't locate Module/Build.pm in @INC (you may need to install the Module::Build module)""
+
+From man Perl 1
+***************
+
+""If you're new to Perl, you should start by running "perldoc perlintro""
+""You need to install the perl-doc package to use this program.""
+perl-doc installation, via synaptic ---> OK
+
+
+
+
+
+
 
