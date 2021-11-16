@@ -29,12 +29,26 @@ Installation: from https://github.com/mquinson/po4a/README.md:
 This fails on my system. Perl seems to need modules that are not available in it.
 ""Can't locate Module/Build.pm in @INC (you may need to install the Module::Build module)""
 
-From man Perl 1
+From $> man Perl 1
 ***************
 
 ""If you're new to Perl, you should start by running "perldoc perlintro""
 ""You need to install the perl-doc package to use this program.""
 perl-doc installation, via synaptic ---> OK
+
+From $> perldoc perlintro
+*************************
+Using Perl modules
+    Perl modules provide a range of features to help you avoid reinventing
+    the wheel, and can be downloaded from CPAN ( <http://www.cpan.org/> )
+    
+    To learn how to install modules you download from CPAN, read
+    perldoc perlmodinstall.
+    
+    
+
+  
+
 
 
 
