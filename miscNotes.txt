@@ -18,8 +18,8 @@ Actual release: from https://github.com/mquinson/po4a/META.json:
 
 Releasing v0.65
 
-Installation: from https://github.com/mquinson/po4a/README.md:
-**************************************************************
+Installation (from https://github.com/mquinson/po4a/README.md):
+***************************************************************
 
 (after git clone) To install this module, type the following:
 
@@ -41,29 +41,30 @@ perl-doc installation, via synaptic ---> OK
 From $> perldoc perlintro
 *************************
 
-Using Perl modules
+""Using Perl modules
     Perl modules provide a range of features to help you avoid reinventing
     the wheel, and can be downloaded from CPAN ( <http://www.cpan.org/> )
     
     To learn how to install modules you download from CPAN, read
-    perldoc perlmodinstall.
+    perldoc perlmodinstall.""
 
 From $> perldoc perlmodinstall
 ******************************
     
-The CPAN is the Comprehensive Perl
+""The CPAN is the Comprehensive Perl
 Archive Network and can be accessed at <http://www.cpan.org/> , and
-searched at <http://search.cpan.org/>
+searched at <http://search.cpan.org/>""
 
 Now I can find and download the Module::Build module from CPAN
 ---> Module-Build-0.4231.tar.gz
 
-There are four steps you must now take:
+There are four steps we must follow now:
 
-    DECOMPRESS the file
+""    DECOMPRESS the file
     UNPACK the file into a directory
     BUILD the module (sometimes unnecessary)
-    INSTALL the module.
+    INSTALL the module.""
+
 
 
 
