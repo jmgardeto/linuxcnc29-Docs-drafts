@@ -24,7 +24,7 @@ Creating a new language translation (direct translation)
 
 If you are the first contributor for the language XX, please fork this
 repository, prepare and/or update the translated message file
-po/documentation.XX.po (described later), and ask the l10n coordinator
+po/XX.po (described later), and ask the l10n coordinator
 to pull your work.
 
 If there are multiple contributors for the same language, please first
@@ -47,7 +47,7 @@ Translation Process Flow
 The overall data-flow looks like this:
 
     +-------------------+            +------------------+
-    | Git source code   | ---(1)---> | L10n coordinator |
+    | linuxCNC source   | ---(1)---> | l10n coordinator |
     | repository        | <---(4)--- | repository       |
     +-------------------+            +------------------+
                                           |      ^
@@ -58,22 +58,22 @@ The overall data-flow looks like this:
                                      +------------------+
 
  * The original documentation files are updated by the development team
- * L10n coordinator pulls from the source (1) and updates the local
+ * l10n coordinator pulls from the source (1) and updates the local
    documentation source files and the message template
-   po/documentation.pot, and merges the changes into all
-   po/documentation.XX.po files
+   po/linuxcnc.pot, and merges the changes into all
+   po/XX.po files
  * Language team pulls from L10n coordinator (2)
- * Language team updates the message file documentation.XX.po (2)
- * L10n coordinator pulls from Language team (3)
- * L10n coordinator asks the result to be integrated (4).
+ * Language team updates the message file XX.po (2)
+ * l10n coordinator pulls from Language team (3)
+ * l10n coordinator asks the result to be integrated (4).
 
-Maintaining the documentation.pot file
+Maintaining the linuxcnc.pot file
 --------------------------------------
 
 (This is done by the documentation l10n coordinator).
 
-The documentation.pot file contains a message catalog extracted from
-Git's documentation sources. The l10n coordinator maintains it by
+The linuxcnc.pot file contains a message catalog extracted from
+linuxCNC documentation sources. The l10n coordinator maintains it by
 adding new translations or update existing ones with po4a(1).  In
 order to update the document sources to extract the messages from, the
 l10n coordinator is expected to pull from the main git repository at
@@ -85,57 +85,56 @@ Language contributors use this file to prepare translations for their
 language, but they are not expected to modify it.
 
 
-Initializing a documentation.XX.po file
+Initializing a XX.po file
 ---------------------------------------
 
 (This is done by the language teams).
 
 If your language XX does not have translated message file
-documentation.XX.po yet, you add a translation for the first time by
+XX.po yet, you add a translation for the first time by
 
  * initializing the translation po file by running:
        msginit --local=XX
-   in the po/directory, where XX is the locale, e.g. "de", "is", "pt_BR",
+   in the po directory, where XX is the locale, e.g. "de", "is", "pt_BR",
    "zh_CN", etc.
  * pre-translating the file for unchanged strings by running:
-       scripts/pre-translate-po po/documentation.XX.po
+       scripts/pre-translate-po po/XX.po
 
-A file po/documentation.XX.po was created, corresponding
+A file po/XX.po was created, corresponding
 to the newly created translation and is ready for your translations.
 
 Then edit the automatically generated copyright info in your new
-documentation.XX.po to be correct, e.g. for Icelandic:
+XX.po to be correct, e.g. for Spanish:
 
     @@ -1,6 +1,6 @@
-    -# Icelandic translations for PACKAGE package.
-    -# Copyright (C) 2010 THE PACKAGE'S COPYRIGHT HOLDER
+    -# Spanish translations for PACKAGE package.
+    -# Copyright (C) 20XX THE PACKAGE'S COPYRIGHT HOLDER
     -# This file is distributed under the same license as the PACKAGE package.
-    +# Icelandic translations for Git documentation.
-    +# Copyright (C) 2010 Ævar Arnfjörð Bjarmason <avarab@gmail.com>
-    +# This file is distributed under the same license as the Git package.
-     # Ævar Arnfjörð Bjarmason <avarab@gmail.com>, 2010.
+    +# Spanish translations for linuxCNC documentation.
+    +# Copyright (C) 20XX Pepe Perez <Pepe@perez.org>
+    +# This file is distributed under the same license as the linuxCNC package.
+     # Pepe Perez <Pepe@perez.org>, 201XX.
 
 And change references to PACKAGE VERSION in the PO Header Entry to
-just "Git Documentation":
+just "linuxCNC Documentation":
 
-    perl -pi -e 's/(?<="Project-Id-Version: )PACKAGE VERSION/Git
-    Documentation/' documentation.XX.po
+    perl -pi -e 's/(?<="Project-Id-Version: )PACKAGE VERSION/linuxCNC
+    Documentation/' XX.po
 
 Once you are done testing the translation (see below), commit the
-documentation.XX.po files and ask the l10n coordinator to pull from you.
+XX.po files and ask the l10n coordinator to pull from you.
 
-Updating a documentation.XX.po file
+Updating a XX.po file
 -----------------------------------
 
 (This is done by the language teams).
 
 If you are replacing translation strings in an existing
-documentation.XX.po file to improve the translation, just edit the
-file.
+XX.po file to improve the translation, just edit the file.
 
-If there's an existing documentation.XX.po file for your language, but
-the repository of the l10n coordinator has newer documentation.pot
-file, chances are the upstreamed documentation.XX.po already includes the
+If there's an existing XX.po file for your language, but
+the repository of the l10n coordinator has newer linuxcnc.pot
+file, chances are the upstreamed XX.po already includes the
 changes of the new version.
 
 Once you are done testing the translation (see below), commit the result
@@ -145,7 +144,7 @@ Testing your changes
 --------------------
 
 (This is done by the language teams, after creating or updating
-documentation.XX.po file).
+XX.po file).
 
 
 Before being able to compile the documents, you need to have a working
@@ -162,9 +161,9 @@ On systems with GNU gettext (i.e. not Solaris) and po4a this will try
 to merge translations with the source asciidoc files into translated
 asciidoc files and compile them to manpages.
 
-Then you can check the translated manpages, for instance for `git add`
+Then you can check the translated manpages, for instance for `halmeter`
 in French:
 
-    $ man -l fr/git-add.1
+    $ man -l fr/halmeter.1
 
 and verify how your translated manpage is rendered.
