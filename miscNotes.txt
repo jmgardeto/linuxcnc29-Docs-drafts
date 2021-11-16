@@ -1,3 +1,4 @@
+=================
 November, 11 2021
 =================
 po4a packages in Debian versions:
@@ -34,18 +35,38 @@ From $> man Perl 1
 
 ""If you're new to Perl, you should start by running "perldoc perlintro""
 ""You need to install the perl-doc package to use this program.""
+
 perl-doc installation, via synaptic ---> OK
 
 From $> perldoc perlintro
 *************************
+
 Using Perl modules
     Perl modules provide a range of features to help you avoid reinventing
     the wheel, and can be downloaded from CPAN ( <http://www.cpan.org/> )
     
     To learn how to install modules you download from CPAN, read
     perldoc perlmodinstall.
+
+From $> perldoc perlmodinstall
+******************************
     
-    
+The CPAN is the Comprehensive Perl
+Archive Network and can be accessed at <http://www.cpan.org/> , and
+searched at <http://search.cpan.org/>
+
+Now I can find and download the Module::Build module from CPAN
+---> Module-Build-0.4231.tar.gz
+
+There are four steps you must now take:
+
+    DECOMPRESS the file
+    UNPACK the file into a directory
+    BUILD the module (sometimes unnecessary)
+    INSTALL the module.
+
+
+
 
   
 
