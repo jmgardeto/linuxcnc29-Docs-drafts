@@ -7,7 +7,7 @@ the language coverage and maintaining the translation.
 A locale name usually has the form ‘ll_CC’. Here ‘ll’ is an two-letter language 
 code, and ‘CC’ is an two-letter country code.
 The two character language translation codes are defined by ISO_639-1,
-as stated in the gettext(1) full manual, appendix A.1, Usual Language
+as stated in the gettext full manual, appendix A.1, Usual Language
 Codes, at
 https://www.gnu.org/software/gettext/manual/gettext.html#Usual-Language-Codes
 
