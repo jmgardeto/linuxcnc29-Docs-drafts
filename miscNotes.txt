@@ -66,7 +66,7 @@ We are going to install the perl modules in the system directory. In this way, t
 
 There are four steps we must follow now:
 
-""    DECOMPRESS the file
+""  DECOMPRESS the file
     UNPACK the file into a directory
     BUILD the module (sometimes unnecessary)
     INSTALL the module.""
@@ -74,25 +74,27 @@ There are four steps we must follow now:
 DECOMPRESS and UNPACK
     gzip -dc Module-Build-0.4231.tar.gz | tar -xof -
 
-I already have a directory with the source files/directories of the module:
+    I already have a directory with the source files/directories of the module:
 
-operador@elite:~/Descargas/perlModules/Module-Build-0.4231$ ls
-bin       Changes  inc      lib      Makefile.PL  META.json  README
-Build.PL  contrib  INSTALL  LICENSE  MANIFEST     META.yml   t
+    operador@elite:~/Descargas/perlModules/Module-Build-0.4231$ ls
+    bin       Changes  inc      lib      Makefile.PL  META.json  README
+    Build.PL  contrib  INSTALL  LICENSE  MANIFEST     META.yml   t
 
-At this point, we have a dilemma:
+BUILD
 
-The module's INSTALL file says:
-"" To install this module, just do:
+    At this point, we have a dilemma:
 
-   perl Build.PL
-. . . ""
+    The module's INSTALL file says:
+   "" To install this module, just do:
 
-On the other hand, the perlmodeinstal help from the Perl documentation says:
-"" Go into the newly-created directory and type:
+      perl Build.PL
+    . . . ""
 
-               perl Makefile.PL
-            . . . ""
+    On the other hand, the perlmodeinstal help from the Perl documentation says:
+    "" Go into the newly-created directory and type:
+
+      perl Makefile.PL
+    . . . ""
 
 Both roads lead us to the same place ......""ERRORS/WARNINGS FOUND IN PREREQUISITES.""
 
@@ -100,17 +102,9 @@ Both roads lead us to the same place ......""ERRORS/WARNINGS FOUND IN PREREQUISI
 Checking optional features ...
 inc_bundling_support .... disabled
    requires:
-     ! inc :: latest is not installed
+     ! inc::latest is not installed
 .... ""
 
 This is because Makefile.PL runs Build.PL
 
 
-
-
-BUILD
-
-        Go into the newly-created directory and type:
-
-              perl Makefile.PL
-              make test
