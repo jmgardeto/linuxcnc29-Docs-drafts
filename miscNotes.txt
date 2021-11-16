@@ -105,15 +105,15 @@ BUILD
       perl Makefile.PL
     . . . ""
 
-Both roads lead us to the same place ......""ERRORS/WARNINGS FOUND IN PREREQUISITES.""
+    Both roads lead us to the same place ......""ERRORS/WARNINGS FOUND IN PREREQUISITES.""
 
-"" ....
-Checking optional features ...
-inc_bundling_support .... disabled
-   requires:
-     ! inc::latest is not installed
-.... ""
+    "" ....
+    Checking optional features ...
+    inc_bundling_support .... disabled
+      requires:
+      ! inc::latest is not installed
+    .... ""
 
-This is because Makefile.PL runs Build.PL
+   This is because Makefile.PL runs Build.PL
 
 
