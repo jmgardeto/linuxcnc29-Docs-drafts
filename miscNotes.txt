@@ -1,15 +1,17 @@
 Note:
 This file is NOT a collection of recipes.
 The purpose of this text is to keep a record of my activities. Perhaps it will be useful to me as a basis for other documents.
-However, a first quick reading can give you an idea of the number of pitfalls present in the translation process.
+However, a quick reading can give you an idea of the number of pitfalls present in the translation process.
 Each individualizable stage is outlined with asterics.
 Paragraphs between a pair of double quotes are literals from other documentation or terminal outputs.
+
 
 
 
 =================
 November, 16 2021
 =================
+
 po4a packages in Debian versions:
 *********************************
 
@@ -182,9 +184,8 @@ November, 17 2021
 po4a Installation (Retry. From https://github.com/mquinson/po4a/README.md):
 ***************************************************************
 
-(after git clone) ""To install this module, type the following:"
+""To install this module, type the following:"
 
-   perl Build.PL --->
    operador@elite:~/po4a$ perl Build.PL
 WARNING: the following files are missing in your kit:
 	META.yml
@@ -196,6 +197,7 @@ Creating new 'Build' script for 'po4a' version '0.66'
 OK
 
    ./Build --->
+   . . .
     2 languages = 100%: de, uk.
  6 languages >= 95%: fr (97%), nl (99%), pt (97%), pt_BR (99%), sr_Cyrl (99%), zh_CHS (97%).
  1 language  >= 80%: es (80%).
