@@ -161,20 +161,21 @@ Using po4a
        po4a-normalize(1) is mostly useful to debug the po4a parsers, as it produces an untranslated document from the original one. It makes it easier 
        to spot the glitches introduced by the parsing process.
 
-       Most projects only require the features of po4a-updatepo(1) and po4a-translate(1), but these scripts proved to be cumbersome and error prone to use. If the
-       documentation to translate is split over several source files, it is difficult to keep the PO files up to date and build the documentation files correctly. As an
-       answer, a all-in-one tool was provided: po4a(1). This tool takes a configuration file describing the structure of the translation project: the location of the PO
-       files, the list of files to translate, and the options to use, and it fully automatizes the process. When you invoke po4a(1), it both updates the PO files and
-       regenerate the translation files that need to. If everything is already up to date, po4a(1) does not change any file.
+       Most projects only require the features of po4a-updatepo(1) and po4a-translate(1), but these scripts proved to be cumbersome and error prone to use. 
+       If the documentation to translate is split over several source files, it is difficult to keep the PO files up to date and build the documentation 
+       files correctly. As an answer, a all-in-one tool was provided: po4a(1). This tool takes a configuration file describing the structure of the 
+       translation project: the location of the PO files, the list of files to translate, and the options to use, and it fully automatizes the process. 
+       When you invoke po4a(1), it both updates the PO files and regenerate the translation files that need to. If everything is already up to date, 
+       po4a(1) does not change any file.
 
-       The rest of this section gives an overview of how use the scripts' interface of po4a. Most users will probably prefer to use the all-in-one tool, that is described in
-       the documentation of po4a(1).
+       The rest of this section gives an overview of how use the scripts' interface of po4a. Most users will probably prefer to use the all-in-one tool, 
+       that is described in the documentation of po4a(1).
 
    Graphical overview of the po4a scripts
-       The following schema gives an overview of how each po4a script can be used.  Here, master.doc is an example name for the documentation to be translated; XX.doc is the
-       same document translated in the language XX while doc.XX.po is the translation catalog for that document in the XX language. Documentation authors will mostly be
-       concerned with master.doc (which can be a manpage, an XML document, an asciidoc file or similar); the translators will be mostly concerned with the PO file, while the
-       end users will only see the XX.doc file.
+       The following schema gives an overview of how each po4a script can be used.  Here, master.doc is an example name for the documentation 
+       to be translated; XX.doc is the same document translated in the language XX while doc.XX.po is the translation catalog for that document in 
+       the XX language. Documentation authors will mostly be concerned with master.doc (which can be a manpage, an XML document, an asciidoc file 
+       or similar); the translators will be mostly concerned with the PO file, while the end users will only see the XX.doc file.
 
                                           master.doc
                                               |
@@ -216,34 +217,37 @@ Using po4a
                                                        XX.doc
                                                     (up-to-date)
 
-       This schema is complicated, but in practice only the right part (involving po4a-updatepo(1) and po4a-translate(1)) is used once the project is setup and configured.
+       This schema is complicated, but in practice only the right part (involving po4a-updatepo(1) and po4a-translate(1)) is used once the project 
+       is setup and configured.
 
-       The left part depicts how po4a-gettextize(1) can be used to convert an existing translation project to the po4a infrastructure. This script takes an original document
-       and its translated counterpart, and tries to build the corresponding PO file. Such manual conversion is rather cumbersome (see the po4a-gettextize(1) documentation
-       for more details), but it is only needed once to convert your existing translations. If you don't have any translation to convert, you can forget about this and focus
-       on the right part of the schema.
+       The left part depicts how po4a-gettextize(1) can be used to convert an existing translation project to the po4a infrastructure. 
+       This script takes an original document and its translated counterpart, and tries to build the corresponding PO file. Such manual conversion 
+       is rather cumbersome (see the po4a-gettextize(1) documentation for more details), but it is only needed once to convert your existing translations. 
+       If you don't have any translation to convert, you can forget about this and focus on the right part of the schema.
 
-       On the top right part, the action of the original author is depicted, updating the documentation. The middle right part depicts the automatic actions of
-       po4a-updatepo(1). The new material is extracted and compared against the exiting translation. The previous translation is used for the parts that didn't change, while
-       partially modified parts are connected to the previous translation with a "fuzzy" marker indicating that the translation must be updated. New or heavily modified
-       material is left untranslated.
+       On the top right part, the action of the original author is depicted, updating the documentation. The middle right part depicts the automatic 
+       actions of po4a-updatepo(1). The new material is extracted and compared against the exiting translation. The previous translation is used for 
+       the parts that didn't change, while partially modified parts are connected to the previous translation with a "fuzzy" marker indicating that 
+       the translation must be updated. New or heavily modified material is left untranslated.
 
-       Then, the manual editing reported depicts the action of the translators, that modify the PO files to provide translations to every original string and paragraph. This
-       can be done using either a specific editor such as the GNOME Translation Editor, KDE's Lokalize or poedit, or using an online localization platform such as weblate or
-       pootle. The translation result is a set of PO files, one per language. Please refer to the gettext documentation for more details.
+       Then, the manual editing reported depicts the action of the translators, that modify the PO files to provide translations to every original 
+       string and paragraph. This can be done using either a specific editor such as the GNOME Translation Editor, KDE's Lokalize or poedit, or 
+       using an online localization platform such as weblate or pootle. The translation result is a set of PO files, one per language. Please refer 
+       to the gettext documentation for more details.
 
-       The bottom part of the figure shows how po4a-translate(1) creates a translated source document from the master.doc original document and the doc.XX.po translation
-       catalog that was updated by the translators. The structure of the document is reused, while the original content is replaced by its translated counterpart.
-       Optionally, an addendum can be used to add some extra text to the translation. This is often used to add the name of the translator to the final document. See below
-       for details.
+       The bottom part of the figure shows how po4a-translate(1) creates a translated source document from the master.doc original document and 
+       the doc.XX.po translation catalog that was updated by the translators. The structure of the document is reused, while the original content is 
+       replaced by its translated counterpart.
+       Optionally, an addendum can be used to add some extra text to the translation. This is often used to add the name of the translator to the 
+       final document. See below for details.
 
-       As noted before, the po4a(1) program combines the effects of the separated scripts, updating the PO files and the translated document in one invocation.  The
-       underlying logic remains the same.
+       As noted before, the po4a(1) program combines the effects of the separated scripts, updating the PO files and the translated document in 
+       one invocation.  The underlying logic remains the same.
 
    Starting a new translation
-       If you use po4a(1), there is no specific step to start a translation. You just have to list the languages in the configuration file, and the missing PO files are
-       automatically created. Naturally, the translator then have to provide translations for every content used in your documents. po4a(1) also creates a POT file, that is
-       a PO template file. Potential translators can translate your project into a new language by renaming this file and providing the translations in their language.
+       If you use po4a(1), there is no specific step to start a translation. You just have to list the languages in the configuration file, and 
+       the missing PO files are automatically created. Naturally, the translator then have to provide translations for every content used in your documents.
+       po4a(1) also creates a POT file, that is a PO template file. Potential translators can translate your project into a new language by renaming this file and providing the translations in their language.
 
        If you prefer to use the individual scripts separately, you should use po4a-gettextize(1) as follows to create the POT file. This file can then be copied into XX.po
        to initiate a new translation.
