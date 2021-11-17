@@ -247,10 +247,11 @@ Using po4a
    Starting a new translation
        If you use po4a(1), there is no specific step to start a translation. You just have to list the languages in the configuration file, and 
        the missing PO files are automatically created. Naturally, the translator then have to provide translations for every content used in your documents.
-       po4a(1) also creates a POT file, that is a PO template file. Potential translators can translate your project into a new language by renaming this file and providing the translations in their language.
+       po4a(1) also creates a POT file, that is a PO template file. Potential translators can translate your project into a new language by renaming this 
+       file and providing the translations in their language.
 
-       If you prefer to use the individual scripts separately, you should use po4a-gettextize(1) as follows to create the POT file. This file can then be copied into XX.po
-       to initiate a new translation.
+       If you prefer to use the individual scripts separately, you should use po4a-gettextize(1) as follows to create the POT file. This file can then 
+       be copied into XX.po to initiate a new translation.
 
          $ po4a-gettextize --format <format> --master <master.doc> --po <translation.pot>
 
@@ -264,21 +265,22 @@ Using po4a
        The master document is used in input, while the PO file is updated: it is used both in input and output.
 
    Generating a translated document
-       Once you're done with the translation, you want to get the translated documentation and distribute it to users along with the original one.  For that, use the
-       po4a-translate(1) program as follows:
+       Once you're done with the translation, you want to get the translated documentation and distribute it to users along with the original one.  
+       For that, use the po4a-translate(1) program as follows:
 
          $ po4a-translate --format <format> --master <master.doc> --po <doc.XX.po> --localized <XX.doc>
 
        Both the master and PO files are used in input, while the localized file is the output of this process.
 
    Using addenda to add extra text to translations
-       Adding new text to the translation is probably the only thing that is easier in the long run when you translate files manually :). This happens when you want to add
-       an extra section to the translated document, not corresponding to any content in the original document. The classical use case is to give credits to the translation
-       team, and to indicate how to report translation-specific issues.
+       Adding new text to the translation is probably the only thing that is easier in the long run when you translate files manually :). This happens 
+       when you want to add an extra section to the translated document, not corresponding to any content in the original document. The classical use 
+       case is to give credits to the translation team, and to indicate how to report translation-specific issues.
 
-       With po4a, you have to specify addendum files, that can be conceptually viewed as patches applied to the localized document after processing. Each addendum must be
-       provided as a separate file, which format is however very different from the classical patches. The first line is a header line, defining the insertion point of the
-       addendum (with an unfortunately cryptic syntax -- see below) while the rest of the file is added verbatim at the determined position.
+       With po4a, you have to specify addendum files, that can be conceptually viewed as patches applied to the localized document after processing. 
+       Each addendum must be provided as a separate file, which format is however very different from the classical patches. The first line is a 
+       header line, defining the insertion point of the addendum (with an unfortunately cryptic syntax -- see below) while the rest of the file is 
+       added verbatim at the determined position.
 
        The header line must begin with the string PO4A-HEADER:, followed by a semi-colon separated list of key=value fields.
 
@@ -286,32 +288,33 @@ Using po4a
 
         PO4A-HEADER: mode=eof
 
-       Things are more complex when you want to add your extra content in the middle of the document. The following header declares an addendum that must be placed after the
-       XML section containing the string "About this document" in translation.
+       Things are more complex when you want to add your extra content in the middle of the document. The following header declares an addendum 
+       that must be placed after the XML section containing the string "About this document" in translation.
 
         PO4A-HEADER: position=About this document; mode=after; endboundary=</section>
 
-       In practice, when trying to apply an addendum, po4a searches for the first line matching the "position" argument (this can be a regexp). Do not forget that po4a
-       considers the translated document here. This documentation is in English, but your line should probably read as follows if you intend your addendum to apply to the
-       French translation of the document.
+       In practice, when trying to apply an addendum, po4a searches for the first line matching the "position" argument (this can be a regexp). Do not 
+       forget that po4a considers the translated document here. This documentation is in English, but your line should probably read as follows if 
+       you intend your addendum to apply to the French translation of the document.
 
         PO4A-HEADER: position=À propos de ce document; mode=after; endboundary=</section>
 
-       Once the "position" is found in the target document, po4a searches for the next line after the "position" that matches the provided "endboundary". The addendum is
-       added right after that line (because we provided an endboundary, i.e. a boundary ending the current section).
+       Once the "position" is found in the target document, po4a searches for the next line after the "position" that matches the provided "endboundary". 
+       The addendum is added right after that line (because we provided an endboundary, i.e. a boundary ending the current section).
 
        The exact same effect could be obtained with the following header, that is equivalent:
 
         PO4A-HEADER: position=About this document; mode=after; beginboundary=<section>
 
-       Here, po4a searches for the first line matching "<section"> after the line matching "About this document" in the translation, and add the addendum before that line
-       since we provided a beginboundary, i.e. a boundary marking the beginning of the next section. So this header line requires to place the addendum after the section
-       containing "About this document", and instruct po4a that a section starts with a line containing the "<section"> tag. This is equivalent to the previous example
-       because what you really want is to add this addendum either after "/section"> or before "<section">.
+       Here, po4a searches for the first line matching "<section"> after the line matching "About this document" in the translation, and add the 
+       addendum before that line since we provided a beginboundary, i.e. a boundary marking the beginning of the next section. So this header 
+       line requires to place the addendum after the section containing "About this document", and instruct po4a that a section starts with a line 
+       containing the "<section"> tag. This is equivalent to the previous example because what you really want is to add this addendum either 
+       after "/section"> or before "<section">.
 
-       You can also set the insertion mode to the value "before", with a similar semantic: combining "mode=before" with an "endboundary" will put the addendum just after the
-       matched boundary, that the last potential boundary line before the "position". Combining "mode=before" with an "beginboundary" will put the addendum just before the
-       matched boundary, that the last potential boundary line before the "position".
+       You can also set the insertion mode to the value "before", with a similar semantic: combining "mode=before" with an "endboundary" will 
+       put the addendum just after the matched boundary, that the last potential boundary line before the "position". Combining "mode=before" 
+       with an "beginboundary" will put the addendum just before the matched boundary, that the last potential boundary line before the "position".
 
          Mode   | Boundary kind |     Used boundary      | Insertion point compared to the boundary
         ========|===============|========================|=========================================
@@ -323,11 +326,12 @@ Using po4a
 
        Hint and tricks about addenda
 
-       •   Remember that these are regexp. For example, if you want to match the end of a nroff section ending with the line ".fi", do not use ".fi" as endboundary, because
-           it will match with "the[ fi]le", which is obviously not what you expect. The correct endboundary in that case is: "^\.fi$".
+       •   Remember that these are regexp. For example, if you want to match the end of a nroff section ending with the line ".fi", do not 
+       use ".fi" as endboundary, because it will match with "the[ fi]le", which is obviously not what you expect. The correct endboundary in 
+       that case is: "^\.fi$".
 
-       •   White spaces ARE important in the content of the "position" and boundaries. So the two following lines are different. The second one will only be found if there
-           is enough trailing spaces in the translated document.
+       •   White spaces ARE important in the content of the "position" and boundaries. So the two following lines are different. The second 
+       one will only be found if there is enough trailing spaces in the translated document.
 
             PO4A-HEADER: position=About this document; mode=after; beginboundary=<section>
             PO4A-HEADER: position=About this document ; mode=after; beginboundary=<section>
@@ -395,15 +399,16 @@ Using po4a
         PO4A-HEADER:mode=before;position=^=head1 AUTEUR
 
 How does it work?
-       This chapter gives you a brief overview of the po4a internals, so that you may feel more confident to help us maintaining and improving it. It may also help you
-       understanding why it does not do what you expected, and how to solve your problems.
+       This chapter gives you a brief overview of the po4a internals, so that you may feel more confident to help us maintaining and improving it. 
+       It may also help you understanding why it does not do what you expected, and how to solve your problems.
 
-       The po4a architecture is object oriented. The Locale::Po4a::TransTractor(3pm) class is the common ancestor to all po4a parsers. This strange name comes from the fact
-       that it is at the same time in charge of translating document and extracting strings.
+       The po4a architecture is object oriented. The Locale::Po4a::TransTractor(3pm) class is the common ancestor to all po4a parsers. This strange 
+       name comes from the fact that it is at the same time in charge of translating document and extracting strings.
 
-       More formally, it takes a document to translate plus a PO file containing the translations to use as input while producing two separate outputs: Another PO file
-       (resulting of the extraction of translatable strings from the input document), and a translated document (with the same structure than the input one, but with all
-       translatable strings replaced with content of the input PO). Here is a graphical representation of this:
+       More formally, it takes a document to translate plus a PO file containing the translations to use as input while producing two separate 
+       outputs: another PO file (resulting of the extraction of translatable strings from the input document), and a translated document (with the 
+       same structure than the input one, but with all translatable strings replaced with content of the input PO). 
+       Here is a graphical representation of this:
 
           Input document --\                             /---> Output document
                             \      TransTractor::       /       (translated)
@@ -412,13 +417,14 @@ How does it work?
           Input PO --------/                             \---> Output PO
                                                                 (extracted)
 
-       This little bone is the core of all the po4a architecture. If you omit the input PO and the output document, you get po4a-gettextize. If you provide both input and
-       disregard the output PO, you get po4a-translate. The po4a calls TransTractor twice and calls msgmerge -U between these TransTractor invocations to provide one-stop
-       solution with a single configuration file.  Please see Locale::Po4a::TransTractor(3pm) for more details.
+       This little bone is the core of all the po4a architecture. If you omit the input PO and the output document, you get po4a-gettextize. 
+       If you provide both input and disregard the output PO, you get po4a-translate. The po4a calls TransTractor twice and calls msgmerge -U between 
+       these TransTractor invocations to provide one-stop solution with a single configuration file.  Please see Locale::Po4a::TransTractor(3pm) 
+       for more details.
 
 Open-source projects using po4a
-       Here is a very partial list of projects that use po4a in production for their documentation. If you want to add your project to the list, just drop us an email (or a
-       Merge Request).
+       Here is a very partial list of projects that use po4a in production for their documentation. If you want to add your project to the list, just 
+       drop us an email (or a Merge Request).
 
        •   adduser (man): users and groups management tool.
 
@@ -426,58 +432,58 @@ Open-source projects using po4a
 
        •   aptitude (docbook, svg): terminal-based package manager for Debian
 
-       •   F-Droid website <https://gitlab.com/fdroid/fdroid-website> (markdown): installable catalogue of FOSS (Free and Open Source Software) applications for the Android
-           platform.
+       •   F-Droid website <https://gitlab.com/fdroid/fdroid-website> (markdown): installable catalogue of FOSS (Free and Open Source Software) 
+       applications for the Android platform.
 
        •   git <https://github.com/jnavila/git-manpages-l10n> (asciidoc): distributed version-control system for tracking changes in source code.
 
        •   Linux manpages <https://salsa.debian.org/manpages-l10n-team/manpages-l10n> (man)
 
-           This project provides an infrastructure for translating many manpages to different languages, ready for integration into several major distributions (Arch Linux,
-           Debian and derivatives, Fedora).
+           This project provides an infrastructure for translating many manpages to different languages, ready for integration into several major 
+           distributions (Arch Linux, Debian and derivatives, Fedora).
 
-       •   Stellarium <https://github.com/Stellarium/stellarium> (HTML): a free open source planetarium for your computer. po4a is used to translate the sky culture
-           descriptions.
+       •   Stellarium <https://github.com/Stellarium/stellarium> (HTML): a free open source planetarium for your computer. po4a is used to 
+       translate the sky culture descriptions.
 
        •   Other item to sort out: <https://gitlab.com/fdroid/fdroid-website/> <https://github.com/fsfe/reuse-docs/pull/61>
 
 FAQ
    How do you pronounce po4a?
-       I personally vocalize it as pouah <https://en.wiktionary.org/wiki/pouah>, which is a French onomatopoetic that we use in place of yuck :) I may have a strange sense
-       of humor :)
+       I personally vocalize it as pouah <https://en.wiktionary.org/wiki/pouah>, which is a French onomatopoetic that we use in place of yuck :) 
+       I may have a strange sense of humor :)
 
    What about the other translation tools for documentation using gettext?
        As far as I know, there are only two of them:
 
        poxml
-           This is the tool developed by KDE people to handle DocBook XML. AFAIK, it was the first program to extract strings to translate from documentation to PO files,
-           and inject them back after translation.
+           This is the tool developed by KDE people to handle DocBook XML. AFAIK, it was the first program to extract strings to translate from 
+           documentation to PO files, and inject them back after translation.
 
-           It can only handle XML, and only a particular DTD. I'm quite unhappy with the handling of lists, which end in one big msgid. When the list become big, the chunk
-           becomes harder to swallow.
+           It can only handle XML, and only a particular DTD. I'm quite unhappy with the handling of lists, which end in one big msgid. 
+           When the list become big, the chunk becomes harder to swallow.
 
        po-debiandoc
-           This program done by Denis Barbier is a sort of precursor of the po4a SGML module, which more or less deprecates it. As the name says, it handles only the
-           DebianDoc DTD, which is more or less a deprecated DTD.
+           This program done by Denis Barbier is a sort of precursor of the po4a SGML module, which more or less deprecates it. As the name says, 
+           it handles only the DebianDoc DTD, which is more or less a deprecated DTD.
 
        The main advantages of po4a over them are the ease of extra content addition (which is even worse there) and the ability to achieve gettextization.
 
    SUMMARY of the advantages of the gettext based approach
        • The translations are not stored along with the original, which makes it possible to detect if translations become out of date.
 
-       • The translations are stored in separate files from each other, which prevents translators of different languages from interfering, both when submitting their patch
-         and at the file encoding level.
+       • The translations are stored in separate files from each other, which prevents translators of different languages from interfering, 
+       both when submitting their patch and at the file encoding level.
 
-       • It is based internally on gettext (but po4a offers a very simple interface so that you don't need to understand the internals to use it).  That way, we don't have
-         to re-implement the wheel, and because of their wide use, we can think that these tools are more or less bug free.
+       • It is based internally on gettext (but po4a offers a very simple interface so that you don't need to understand the internals to use it).  
+       That way, we don't have to re-implement the wheel, and because of their wide use, we can think that these tools are more or less bug free.
 
-       • Nothing changed for the end-user (beside the fact translations will hopefully be better maintained). The resulting documentation file distributed is exactly the
-         same.
+       • Nothing changed for the end-user (beside the fact translations will hopefully be better maintained). The resulting documentation file 
+       distributed is exactly the same.
 
        • No need for translators to learn a new file syntax and their favorite PO file editor (like Emacs' PO mode, Lokalize or Gtranslator) will work just fine.
 
-       • gettext offers a simple way to get statistics about what is done, what should be reviewed and updated, and what is still to do. Some example can be found at those
-         addresses:
+       • gettext offers a simple way to get statistics about what is done, what should be reviewed and updated, and what is still to do. Some example 
+       can be found at those addresses:
 
           - https://docs.kde.org/stable5/en/kdesdk/lokalize/project-view.html
           - http://www.debian.org/intl/l10n/
@@ -486,13 +492,14 @@ FAQ
 
        • Addenda are… strange at the first glance.
 
-       • You can't adapt the translated text to your preferences, like splitting a paragraph here, and joining two other ones there. But in some sense, if there is an issue
-         with the original, it should be reported as a bug anyway.
+       • You can't adapt the translated text to your preferences, like splitting a paragraph here, and joining two other ones there. But in 
+       some sense, if there is an issue with the original, it should be reported as a bug anyway.
 
        • Even with an easy interface, it remains a new tool people have to learn.
 
-         One of my dreams would be to integrate somehow po4a to Gtranslator or Lokalize. When a documentation file is opened, the strings are automatically extracted, and a
-         translated file + po file can be written to disk. If we manage to do an MS Word (TM) module (or at least RTF) professional translators may even use it.
+         One of my dreams would be to integrate somehow po4a to Gtranslator or Lokalize. When a documentation file is opened, the strings are 
+         automatically extracted, and a translated file + po file can be written to disk. If we manage to do an MS Word (TM) module (or at 
+         least RTF) professional translators may even use it.
 
 SEE ALSO
        •   The documentation of the all-in-one tool that you should use: po4a(1).
@@ -502,9 +509,10 @@ SEE ALSO
        •   The additional helping scripts: msguntypot(1), po4a-display-man(1), po4a-display-pod(1).
 
        •   The parsers of each formats, in particular to see the options accepted by each of them: Locale::Po4a::AsciiDoc(3pm) Locale::Po4a::Dia(3pm),
-           Locale::Po4a::Guide(3pm), Locale::Po4a::Ini(3pm), Locale::Po4a::KernelHelp(3pm), Locale::Po4a::Man(3pm), Locale::Po4a::RubyDoc(3pm), Locale::Po4a::Texinfo(3pm),
-           Locale::Po4a::Text(3pm), Locale::Po4a::Xhtml(3pm), Locale::Po4a::Yaml(3pm), Locale::Po4a::BibTeX(3pm), Locale::Po4a::Docbook(3pm), Locale::Po4a::Halibut(3pm),
-           Locale::Po4a::LaTeX(3pm), Locale::Po4a::Pod(3pm), Locale::Po4a::Sgml(3pm), Locale::Po4a::TeX(3pm), Locale::Po4a::Wml(3pm), Locale::Po4a::Xml(3pm).
+           Locale::Po4a::Guide(3pm), Locale::Po4a::Ini(3pm), Locale::Po4a::KernelHelp(3pm), Locale::Po4a::Man(3pm), Locale::Po4a::RubyDoc(3pm),
+           Locale::Po4a::Texinfo(3pm), Locale::Po4a::Text(3pm), Locale::Po4a::Xhtml(3pm), Locale::Po4a::Yaml(3pm), Locale::Po4a::BibTeX(3pm),
+           Locale::Po4a::Docbook(3pm), Locale::Po4a::Halibut(3pm), Locale::Po4a::LaTeX(3pm), Locale::Po4a::Pod(3pm), Locale::Po4a::Sgml(3pm),
+           Locale::Po4a::TeX(3pm), Locale::Po4a::Wml(3pm), Locale::Po4a::Xml(3pm).
 
        •   The implementation of the core infrastructure: Locale::Po4a::TransTractor(3pm) (particularly important to understand the code organization),
            Locale::Po4a::Chooser(3pm), Locale::Po4a::Po(3pm), Locale::Po4a::Common(3pm). Please also check the CONTRIBUTING.md file in the source tree.
