@@ -27,7 +27,7 @@ Actual release (from https://github.com/mquinson/po4a/META.json):
 
 Releasing v0.65
 
-Installation (from https://github.com/mquinson/po4a/README.md):
+po4a Installation (from https://github.com/mquinson/po4a/README.md):
 ***************************************************************
 
 (after git clone) ""To install this module, type the following:
@@ -179,7 +179,7 @@ OK
 November, 17 2021
 =================
 
-Installation (Retry. From https://github.com/mquinson/po4a/README.md):
+po4a Installation (Retry. From https://github.com/mquinson/po4a/README.md):
 ***************************************************************
 
 (after git clone) ""To install this module, type the following:"
