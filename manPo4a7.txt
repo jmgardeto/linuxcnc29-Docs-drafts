@@ -336,12 +336,13 @@ Using po4a
             PO4A-HEADER: position=About this document; mode=after; beginboundary=<section>
             PO4A-HEADER: position=About this document ; mode=after; beginboundary=<section>
 
-       •   Although this context search may be considered to operate roughly on each line of the translated document, it actually operates on the internal data string of the
-           translated document. This internal data string may be a text spanning a paragraph containing multiple lines or may be a XML tag itself alone. The exact insertion
-           point of the addendum must be before or after the internal data string and can not be within the internal data string.
+       •   Although this context search may be considered to operate roughly on each line of the translated document, it actually operates on the 
+       internal data string of the translated document. This internal data string may be a text spanning a paragraph containing multiple lines or may 
+       be a XML tag itself alone. The exact insertion point of the addendum must be before or after the internal data string and can not be within 
+       the internal data string.
 
-       •   Pass the -vv argument to po4a to understand how the addenda are added to the translation. It may also help to run po4a in debug mode to see the actual internal
-           data string when your addendum does not apply.
+       •   Pass the -vv argument to po4a to understand how the addenda are added to the translation. It may also help to run po4a in debug mode to see 
+       the actual internal data string when your addendum does not apply.
 
        Addenda examples
 
@@ -349,18 +350,19 @@ Using po4a
 
              .SH "AUTHORS"
 
-           You should select a two step approach by setting mode=after. Then you should narrow down search to the line after AUTHORS with the position argument regex. Then,
-           you should match the beginning of the next section (i.e., ^\.SH) with the beginboundary argument regex. That is to say:
+           You should select a two step approach by setting mode=after. Then you should narrow down search to the line after AUTHORS with the position 
+           argument regex. Then, you should match the beginning of the next section (i.e., ^\.SH) with the beginboundary argument regex. That is to say:
 
             PO4A-HEADER:mode=after;position=AUTHORS;beginboundary=\.SH
 
-       •   If you want to add something right after a given line (e.g. after the line "Copyright Big Dude"), use a position matching this line, mode=after and give a
-           beginboundary matching any line.
+       •   If you want to add something right after a given line (e.g. after the line "Copyright Big Dude"), use a position matching this line, 
+       mode=after and give a beginboundary matching any line.
 
             PO4A-HEADER:mode=after;position=Copyright Big Dude, 2004;beginboundary=^
 
-       •   If you want to add something at the end of the document, give a position matching any line of your document (but only one line. Po4a won't proceed if it's not
-           unique), and give an endboundary matching nothing. Don't use simple strings here like "EOF", but prefer those which have less chance to be in your document.
+       •   If you want to add something at the end of the document, give a position matching any line of your document (but only one line. Po4a won't 
+       proceed if it's not unique), and give an endboundary matching nothing. Don't use simple strings here like "EOF", but prefer those which have 
+       less chance to be in your document.
 
             PO4A-HEADER:mode=after;position=About this document;beginboundary=FakePo4aBoundary
 
@@ -376,8 +378,8 @@ Using po4a
         |
         |me
 
-       Then, the following addendum will ensure that a section (in French) about the translator is added at the end of the file (in French, "TRADUCTEUR" means "TRANSLATOR",
-       and "moi" means "me").
+       Then, the following addendum will ensure that a section (in French) about the translator is added at the end of the file (in French, 
+       "TRADUCTEUR" means "TRANSLATOR", and "moi" means "me").
 
         |PO4A-HEADER:mode=after;position=AUTEUR;beginboundary=^=head
         |
@@ -390,9 +392,9 @@ Using po4a
 
         PO4A-HEADER:mode=after;position=NOM;beginboundary=^=head1
 
-       This works because the next line matching the beginboundary /^=head1/ after the section "NAME" (translated to "NOM" in French), is the one declaring the authors. So,
-       the addendum will be put between both sections. Note that if another section is added between NAME and AUTHOR sections later, po4a will wrongfully put the addenda
-       before the new section.
+       This works because the next line matching the beginboundary /^=head1/ after the section "NAME" (translated to "NOM" in French), is the one 
+       declaring the authors. So, the addendum will be put between both sections. Note that if another section is added between NAME and AUTHOR 
+       sections later, po4a will wrongfully put the addenda before the new section.
 
        To avoid this you may accomplish the same using mode=before:
 
