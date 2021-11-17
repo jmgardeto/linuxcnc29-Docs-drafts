@@ -8,7 +8,7 @@ Paragraphs between a pair of double quotes are literals from other documentation
 
 
 =================
-November, 11 2021
+November, 16 2021
 =================
 po4a packages in Debian versions:
 *********************************
@@ -175,8 +175,46 @@ Installing /usr/local/bin/config_data
 
 OK
 
+=================
+November, 17 2021
+=================
 
+Installation (Retry. From https://github.com/mquinson/po4a/README.md):
+***************************************************************
 
+(after git clone) ""To install this module, type the following:"
+
+   perl Build.PL --->
+   operador@elite:~/po4a$ perl Build.PL
+WARNING: the following files are missing in your kit:
+	META.yml
+Please inform the author.
+
+Created MYMETA.yml and MYMETA.json
+Creating new 'Build' script for 'po4a' version '0.66'
+
+OK
+
+   ./Build --->
+    2 languages = 100%: de, uk.
+ 6 languages >= 95%: fr (97%), nl (99%), pt (97%), pt_BR (99%), sr_Cyrl (99%), zh_CHS (97%).
+ 1 language  >= 80%: es (80%).
+ 3 languages >= 70%: it (75%), ja (72%), pl (71%).
+ 1 language  >= 50%: ru (67%).
+ 1 language  >= 33%: ca (46%).
+ 4 starting languages: eo (2%), hr (0%), hu (0%), nb (1%).
+
+OK
+   
+   sudo ./Build install
+[sudo] password for operador: 
+Installing /usr/local/share/perl/5.28.1/Locale/Po4a/KernelHelp.pm
+Installing /usr/local/share/perl/5.28.1/Locale/Po4a/BibTeX.pm
+. . .
+Installing /usr/local/bin/po4a-updatepo
+Writing /usr/local/lib/x86_64-linux-gnu/perl/5.28.1/auto/po4a/.packlist
+
+OK
 
 
 
