@@ -113,7 +113,8 @@ Why po4a?
            See Locale::Po4a:Guide for greater details.
 
        Wml (probably mature parser)
-           The Web Markup Language, do not mixup WML with the WAP stuff used on cell phones.  This module relies on the Xhtml module, which itself relies on the XmL module.
+           The Web Markup Language, do not mixup WML with the WAP stuff used on cell phones.  This module relies on the Xhtml module, which 
+           itself relies on the XmL module.
 
            See Locale::Po4a::Wml for greater details.
 
@@ -123,13 +124,14 @@ Why po4a?
            See Locale::Po4a::Yaml for greater details.
 
        RubyDoc (probably mature parser)
-           The Ruby Document (RD) format, originally the default documentation format for Ruby and Ruby projects before converted to RDoc in 2002. Though apparently the
-           Japanese version of the Ruby Reference Manual still use RD.
+           The Ruby Document (RD) format, originally the default documentation format for Ruby and Ruby projects before converted to RDoc 
+           in 2002. Though apparently the Japanese version of the Ruby Reference Manual still use RD.
 
            See Locale::Po4a::RubyDoc for greater details.
 
        Halibut (probably experimental parser)
-           A documentation production system, with elements similar to TeX, debiandoc-sgml, TeXinfo, and others, developed by Simon Tatham, the developer of PuTTY.
+           A documentation production system, with elements similar to TeX, debiandoc-sgml, TeXinfo, and others, developed by Simon Tatham, the 
+           developer of PuTTY.
 
            See Locale::Po4a:Halibut for greater details.
 
@@ -143,20 +145,21 @@ Why po4a?
            Locale::Po4a::Texinfo(3pm) in po4a is still at the beginning.  Please report bugs and feature requests.
 
        Others supported formats
-           Po4a can also handle some more rare or specialized formats, such as the documentation of compilation options for the 2.4+ Linux kernels (Locale::Po4a::KernelHelp)
-           or the diagrams produced by the dia tool (Locale::Po4a:Dia). Adding a new format is often very easy and the main task is to come up with a parser for your target
-           format. See Locale::Po4a::TransTractor(3pm) for more information about this.
+           Po4a can also handle some more rare or specialized formats, such as the documentation of compilation options for the 2.4+ Linux 
+           kernels (Locale::Po4a::KernelHelp) or the diagrams produced by the dia tool (Locale::Po4a:Dia). Adding a new format is often very easy 
+           and the main task is to come up with a parser for your target format. See Locale::Po4a::TransTractor(3pm) for more information about this.
 
        Unsupported formats
-           Unfortunately, po4a still lacks support for several documentation formats. Many of them would be easy to support in po4a. This includes formats not just used for
-           documentation, such as, package descriptions (deb and rpm), package installation scripts questions, package changelogs, and all the specialized file formats used
-           by programs such as game scenarios or wine resource files.
+           Unfortunately, po4a still lacks support for several documentation formats. Many of them would be easy to support in po4a. 
+           This includes formats not just used for documentation, such as, package descriptions (deb and rpm), package installation scripts questions, 
+           package changelogs, and all the specialized file formats used by programs such as game scenarios or wine resource files.
 
 Using po4a
-       Historically, po4a was built around four scripts, each fulfilling a specific task. po4a-gettextize(1) helps bootstrapping translations and optionally converting
-       existing translation projects to po4a. po4a-updatepo(1) reflects the changes to the original documentation into the corresponding po files.  po4a-translate(1) builds
-       translated source file from the original file and the corresponding PO file. In addition, po4a-normalize(1) is mostly useful to debug the po4a parsers, as it produces
-       an untranslated document from the original one. It makes it easier to spot the glitches introduced by the parsing process.
+       Historically, po4a was built around four scripts, each fulfilling a specific task. po4a-gettextize(1) helps bootstrapping translations 
+       and optionally converting existing translation projects to po4a. po4a-updatepo(1) reflects the changes to the original documentation into 
+       the corresponding po files.  po4a-translate(1) builds translated source file from the original file and the corresponding PO file. In addition, 
+       po4a-normalize(1) is mostly useful to debug the po4a parsers, as it produces an untranslated document from the original one. It makes it easier 
+       to spot the glitches introduced by the parsing process.
 
        Most projects only require the features of po4a-updatepo(1) and po4a-translate(1), but these scripts proved to be cumbersome and error prone to use. If the
        documentation to translate is split over several source files, it is difficult to keep the PO files up to date and build the documentation files correctly. As an
