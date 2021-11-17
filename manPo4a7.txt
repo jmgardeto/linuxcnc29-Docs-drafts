@@ -23,25 +23,27 @@ Why po4a?
        A whole ecosystem of tools has emerged to help the translators actually translate these PO files. The result is then used by gettext at 
        run time to display translated messages to the end users.
 
-       Regarding documentation, however, the situation still somewhat disappointing.  At first translating documentation may seem to be easier than translating a program as
-       it would seem that you just have to copy the documentation source file and start translating the content. However, when the original documentation is modified,
-       keeping track of the modifications quickly turns into a nightmare for the translators. If done manually, this task is unpleasant and error prone.
+       Regarding documentation, however, the situation still somewhat disappointing.  At first translating documentation may seem to be easier 
+       than translating a program as it would seem that you just have to copy the documentation source file and start translating the content. 
+       However, when the original documentation is modified,keeping track of the modifications quickly turns into a nightmare for the translators. 
+       If done manually, this task is unpleasant and error prone.
 
-       Outdated translations are often worse than no translation at all. End-users can be tricked by documentation describing an old behavior of the program.  Furthermore,
-       they cannot interact directly with the maintainers since they don't speak English. Additionally, the maintainer cannot fix the problem as they don't know every
-       language in which their documentation is translated.  These difficulties, often caused by poor tooling, can undermine the motivation of volunteer translators, further
-       aggravating the problem.
+       Outdated translations are often worse than no translation at all. End-users can be tricked by documentation describing an old behavior 
+       of the program. Furthermore, they cannot interact directly with the maintainers since they don't speak English. Additionally, the 
+       maintainer cannot fix the problem as they don't know every language in which their documentation is translated.  These difficulties, 
+       often caused by poor tooling, can undermine the motivation of volunteer translators, further aggravating the problem.
 
        The goal of the po4a project is to ease the work of documentation translators.  In particular, it makes documentation translations maintainable.
 
-       The idea is to reuse and adapt the gettext approach to this field. As with gettext, texts are extracted from their original locations and presented to translators as
-       PO translation catalogs. The translators can leverage the classical gettext tools to monitor the work to do, collaborate and organize as teams. po4a then injects the
-       translations directly into the documentation structure to produce translated source files that can be processed and distributed just like the English files. Any
-       paragraph that is not translated is left in English in the resulting document, ensuring that the end users never see an outdated translation in the documentation.
+       The idea is to reuse and adapt the gettext approach to this field. As with gettext, texts are extracted from their original locations and 
+       presented to translators as PO translation catalogs. The translators can leverage the classical gettext tools to monitor the work to do, 
+       collaborate and organize as teams. po4a then injects the translations directly into the documentation structure to produce translated source 
+       files that can be processed and distributed just like the English files. Any paragraph that is not translated is left in English in the 
+       resulting document, ensuring that the end users never see an outdated translation in the documentation.
 
-       This automates most of the grunt work of the translation maintenance.  Discovering the paragraphs needing an update becomes very easy, and the process is completely
-       automated when elements are reordered without further modification. Specific verification can also be used to reduce the chance of formatting errors that would result
-       in a broken document.
+       This automates most of the grunt work of the translation maintenance.  Discovering the paragraphs needing an update becomes very easy, 
+       and the process is completely automated when elements are reordered without further modification. Specific verification can also be used 
+       to reduce the chance of formatting errors that would result in a broken document.
 
        Please also see the FAQ below in this document for a more complete list of the advantages and disadvantages of this approach.
 
@@ -49,31 +51,34 @@ Why po4a?
        Currently, this approach has been successfully implemented to several kinds of text formatting formats:
 
        man (mature parser)
-           The good old manual pages' format, used by so many programs out there. po4a support is very welcome here since this format is somewhat difficult to use and not
-           really friendly to newbies.
+           The good old manual pages' format, used by so many programs out there. po4a support is very welcome here since this format is somewhat 
+           difficult to use and not really friendly to newbies.
 
            The Locale::Po4a::Man(3pm) module also supports the mdoc format, used by the BSD man pages (they are also quite common on Linux).
 
        AsciiDoc (mature parser)
-           This format is a lightweight markup format intended to ease the authoring of documentation. It is for example used to document the git system. Those manpages are
-           translated using po4a.
+           This format is a lightweight markup format intended to ease the authoring of documentation. It is for example used to document the 
+           git system. Those manpages are translated using po4a.
 
            See Locale::Po4a::AsciiDoc for details.
 
        pod (mature parser)
-           This is the Perl Online Documentation format. The language and extensions themselves are documented using this format in addition to most existing Perl scripts.
-           It makes easy to keep the documentation close to the actual code by embedding them both in the same file. It makes programmer's life easier, but unfortunately,
-           not the translator's, until you use po4a.
+           This is the Perl Online Documentation format. The language and extensions themselves are documented using this format in addition 
+           to most existing Perl scripts.
+           It makes easy to keep the documentation close to the actual code by embedding them both in the same file. It makes programmer's 
+           life easier, but unfortunately, not the translator's, until you use po4a.
 
            See Locale::Po4a::Pod for details.
 
        sgml (mature parser)
-           Even if superseded by XML nowadays, this format is still used for documents which are more than a few screens long. It can even be used for complete books.
-           Documents of this length can be very challenging to update. diff often reveals useless when the original text was re-indented after update.  Fortunately, po4a can
-           help you after that process.
+           Even if superseded by XML nowadays, this format is still used for documents which are more than a few screens long. It can even 
+           be used for complete books.
+           Documents of this length can be very challenging to update. diff often reveals useless when the original text was re-indented after update.
+           Fortunately, po4a can help you after that process.
 
-           Currently, only DebianDoc and DocBook DTD are supported, but adding support for a new one is really easy. It is even possible to use po4a on an unknown SGML DTD
-           without changing the code by providing the needed information on the command line. See Locale::Po4a::Sgml(3pm) for details.
+           Currently, only DebianDoc and DocBook DTD are supported, but adding support for a new one is really easy. It is even possible to use 
+           po4a on an unknown SGML DTD without changing the code by providing the needed information on the command line. See Locale::Po4a::Sgml(3pm) 
+           for details.
 
        TeX / LaTeX (mature parser)
            The LaTeX format is a major documentation format used in the Free Software world and for publications.
@@ -81,8 +86,8 @@ Why po4a?
            The Locale::Po4a::LaTeX(3pm) module was tested with the Python documentation, a book and some presentations.
 
        text (mature parser)
-           The Text format is the base format for many formats that include long blocks of text, including Markdown, fortunes, YAML front matter section, debian/changelog,
-           and debian/control.
+           The Text format is the base format for many formats that include long blocks of text, including Markdown, fortunes, YAML front 
+           matter section, debian/changelog, and debian/control.
 
            This supports the common format used in Static Site Generators, READMEs, and other documentation systems. See Locale::Po4a::Text(3pm) for details.
 
@@ -102,8 +107,8 @@ Why po4a?
            See Locale::Po4a:Docbook for greater details.
 
        Guide XML (probably mature parser)
-           A XML documentation format. This module was developed specifically to help with supporting and maintaining translations of Gentoo Linux documentation up until at
-           least March 2016 (Based on the Wayback Machine). Gentoo have since moved to the DevBook XML format.
+           A XML documentation format. This module was developed specifically to help with supporting and maintaining translations of Gentoo 
+           Linux documentation up until at least March 2016 (Based on the Wayback Machine). Gentoo have since moved to the DevBook XML format.
 
            See Locale::Po4a:Guide for greater details.
 
