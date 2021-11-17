@@ -218,12 +218,13 @@ Writing /usr/local/lib/x86_64-linux-gnu/perl/5.28.1/auto/po4a/.packlist
 
 OK
 
-po4a man page
-*************
+po4a man pages
+**************
 
-The man page for po4a is now available. The manPo4a1.txt file contains a snapshot.
-There is also the man page po4a.7. The manPo4a7.txt file contains a snapshot.
-   
+The man page for po4a is now available. The man page po4a.7 contains a very interesting introduction to the po4a project.
+The manPo4a7.txt file contains a snapshot. 
+
+
    
 
 
