@@ -115,5 +115,17 @@ BUILD
     .... ""
 
    This is because Makefile.PL runs Build.PL
+   
+   gzip -dc inc-latest-0.500.tar.gz | tar -xof -
+   
+   operador@elite:~/Descargas/perlModules/inc-latest-0.500$ ls
+   Changes            cpanfile  lib      Makefile.PL  META.json  perlcritic.rc  t            xt
+   CONTRIBUTING.mkdn  dist.ini  LICENSE  MANIFEST     META.yml   README         tidyall.ini
+   
+   $ perl Makefile.PL
+   
+
+   
+   
 
 
