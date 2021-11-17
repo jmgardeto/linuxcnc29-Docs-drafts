@@ -32,4 +32,4 @@ Any paragraph that is not translated is left in English in the resulting documen
 Discovering the paragraphs needing an update becomes very easy, and the process is completely automated when elements are reordered without further modification. 
 Specific verification can also be used to reduce the chance of formatting errors that would result in a broken document.
 
-**...to be continued***
+**...to be continued**
