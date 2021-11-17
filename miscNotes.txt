@@ -94,10 +94,10 @@ BUILD
     At this point, we have a dilemma:
 
     The module's INSTALL file says:
-   "" To install this module, just do:
+   ""Go into the newly-created directory and type:
 
-      perl Build.PL
-    . . . ""
+              perl Makefile.PL
+              make test""
 
     On the other hand, the perlmodeinstal help from the Perl documentation says:
     "" Go into the newly-created directory and type:
@@ -122,8 +122,63 @@ BUILD
    Changes            cpanfile  lib      Makefile.PL  META.json  perlcritic.rc  t            xt
    CONTRIBUTING.mkdn  dist.ini  LICENSE  MANIFEST     META.yml   README         tidyall.ini
    
-   $ perl Makefile.PL
+   $ perl Makefile.PL   ---> OK
+   $ make test --->
+         "". . .
+           All tests successful.
+           . . . 
+           Result: PASS""
+INSTALL
+
+   From the Perl documentation
+        ""While still in that directory, type:
+
+              make install
+              . . .
+              Often, you'll need to be root.""
+
+   We now try to install inc-latest-0.500;
    
+   $ sudo make install
+   [sudo] password for operador: 
+   Manifying 2 pod documents
+   Installing /usr/local/share/perl/5.28.1/inc/latest.pm
+   Installing /usr/local/share/perl/5.28.1/inc/latest/private.pm
+   Installing /usr/local/man/man3/inc::latest.3pm
+   Installing /usr/local/man/man3/inc::latest::private.3pm
+   Appending installation info to /usr/local/lib/x86_64-linux-gnu/perl/5.28.1/perllocal.pod
+   
+   OK
+   
+Now we retry Module-Build-0.4231
+operador@elite:~/Descargas/perlModules/Module-Build-0.4231$ perl Makefile.PL
+# running Build.PL 
+Created MYMETA.yml and MYMETA.json
+Creating new 'Build' script for 'Module-Build' version '0.4231'
+
+OK
+
+operador@elite:~/Descargas/perlModules/Module-Build-0.4231$ make test
+All tests successful.
+Files=53, Tests=1167, 73 wallclock secs ( 0.29 usr  0.09 sys + 47.32 cusr  9.02 csys = 56.72 CPU)
+Result: PASS
+
+OK
+
+operador@elite:~/Descargas/perlModules/Module-Build-0.4231$ sudo make install
+/usr/bin/perl Build --makefile_env_macros 1 install
+Building Module-Build
+Installing /usr/local/man/man1/config_data.1p
+Installing /usr/local/share/perl/5.28.1/Module/Build.pm
+. . .
+Installing /usr/local/bin/config_data
+
+OK
+
+
+
+
+
 
    
    
